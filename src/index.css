@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (.dark &);
+
 @theme {
   --font-sans: 'Outfit', sans-serif;
   --font-heading: 'Space Grotesk', sans-serif;
@@ -11,14 +13,25 @@
   --color-dark-card: rgba(17, 24, 39, 0.75);
 
   --animate-float: float 6s ease-in-out infinite;
-  --animate-fade-in: fadeIn 1s ease-out forwards;
+  --animate-float-slow: floatSlow 25s ease-in-out infinite;
+  --animate-float-medium: floatMedium 18s ease-in-out infinite;
+  --animate-fade-in: fadeIn 0.8s ease-out forwards;
   --animate-slide-up: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-pulse-glow: pulseGlow 2.5s ease-in-out infinite;
   --animate-reveal-width: revealWidth 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  --animate-infinite-scroll: infiniteScroll 12s linear infinite;
 
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-12px); }
+  }
+  @keyframes floatSlow {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    50% { transform: translate(60px, -80px) scale(1.15); }
+  }
+  @keyframes floatMedium {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    50% { transform: translate(-70px, 50px) scale(1.08); }
   }
   @keyframes fadeIn {
     from { opacity: 0; }
@@ -36,11 +49,15 @@
     from { width: 0%; }
     to { width: 100%; }
   }
+  @keyframes infiniteScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-dark-bg);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -62,21 +79,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-panel {
-  background: rgba(17, 25, 40, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(15, 23, 42, 0.45);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03);
+  transition: all 0.3s ease;
+}
+
+.dark .glass-panel {
+  background: rgba(17, 25, 40, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-panel-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-panel-hover:hover {
-  background: rgba(17, 25, 40, 0.8);
-  border-color: rgba(6, 182, 212, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
-  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(16, 185, 129, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.1);
+  transform: translateY(-6px);
+}
+
+.dark .glass-panel-hover:hover {
+  background: rgba(17, 25, 40, 0.75);
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow: 0 20px 40px -15px rgba(6, 182, 212, 0.2);
 }
 
 .text-neon-cyan {
