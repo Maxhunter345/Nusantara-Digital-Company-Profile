@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Home from './pages/Home';
 import { Compass, Menu, X, Globe, Phone, Shield } from 'lucide-react';
 
 export default function App() {
@@ -92,16 +93,11 @@ export default function App() {
         )}
       </header>
 
-      <main className="flex-grow pt-10 px-6 max-w-6xl mx-auto w-full flex items-center justify-center min-h-[60vh]">
+      <main className="flex-grow pt-10">
         {page === 'home' ? (
-          <div className="text-center space-y-4 animate-fade-in">
-            <h2 className="text-3xl font-extrabold">Selamat Datang di Nusantara Digital</h2>
-            <p className="text-gray-400 max-w-md mx-auto font-light">
-              Website sedang dalam tahap pengembangan. Halaman layanan dan profil tim kami akan segera hadir.
-            </p>
-          </div>
+          <Home setPage={setPage} />
         ) : (
-          <div className="text-center space-y-4 animate-fade-in">
+          <div className="text-center space-y-4 animate-fade-in py-20 px-6">
             <h2 className="text-3xl font-extrabold">Hubungi Kami</h2>
             <p className="text-gray-400 max-w-md mx-auto font-light">
               Halaman kontak, formulir pesan, peta lokasi, dan status cuaca akan segera hadir.
@@ -110,7 +106,7 @@ export default function App() {
         )}
       </main>
 
-      <footer className="glass-panel border-t border-slate-800/80 bg-slate-950/40 mt-auto">
+      <footer className="glass-panel border-t border-slate-800/80 bg-slate-950/40">
         <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4 col-span-1 md:col-span-2">
             <div className="flex items-center gap-2">
