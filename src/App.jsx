@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Home from './pages/Home';
+import Contact from './pages/Contact';
 import { Compass, Menu, X, Globe, Phone, Shield } from 'lucide-react';
 
 export default function App() {
@@ -94,16 +95,7 @@ export default function App() {
       </header>
 
       <main className="flex-grow pt-10">
-        {page === 'home' ? (
-          <Home setPage={setPage} />
-        ) : (
-          <div className="text-center space-y-4 animate-fade-in py-20 px-6">
-            <h2 className="text-3xl font-extrabold">Hubungi Kami</h2>
-            <p className="text-gray-400 max-w-md mx-auto font-light">
-              Halaman kontak, formulir pesan, peta lokasi, dan status cuaca akan segera hadir.
-            </p>
-          </div>
-        )}
+        {page === 'home' ? <Home setPage={setPage} /> : <Contact />}
       </main>
 
       <footer className="glass-panel border-t border-slate-800/80 bg-slate-950/40">
