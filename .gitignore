@@ -1,4 +1,3 @@
-# Logs
 logs
 *.log
 npm-debug.log*
@@ -12,4 +11,4 @@ dist-ssr
 .DS_Store
 .vite/
 .vite
-
+NAMA_NIM_IF352.txt
